@@ -45,15 +45,6 @@ This query calculates how many bookings each user has made using:
 - `GROUP BY` to aggregate per user.
 - A `LEFT JOIN` ensures users with zero bookings are still included.
 
-```sql
-SELECT 
-    u.id AS user_id,
-    u.name AS user_name,
-    COUNT(b.id) AS total_bookings
-FROM users u
-LEFT JOIN bookings b ON u.id = b.user_id
-GROUP BY u.id, u.name
-ORDER BY total_bookings DESC;
 
 ---
 
