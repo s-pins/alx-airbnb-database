@@ -45,6 +45,29 @@ This query calculates how many bookings each user has made using:
 - `GROUP BY` to aggregate per user.
 - A `LEFT JOIN` ensures users with zero bookings are still included.
 
+---
+
+### **Task 3 — Indexing for Optimization**
+**Files:** `index_performance.md`  
+- Created indexes on frequently used columns (`user_id`, `property_id`, `start_date`).  
+- Compared query performance before and after indexing with `EXPLAIN ANALYZE`.  
+- Result: up to **4× faster** query execution on large joins.
+
+---
+
+### **Task 4 — Query Optimization**
+**Files:** `performance.sql`, `optimization_report.md`  
+- Refactored a heavy multi-join query linking `bookings`, `users`, `properties`, and `payments`.  
+- Reduced redundancy and optimized join order using indexed columns.  
+- Documented performance improvements with visual query plans.
+
+---
+
+### **Task 5 — Partitioning Large Tables**
+**Files:** `partitioning.sql`, `partition_performance.md`  
+- Implemented **range partitioning** on the `bookings` table by `start_date`.  
+- Improved query execution time by focusing scans only on relevant partitions.  
+- Observed up to **75% reduction** in execution time for date-range queries.
 
 ---
 
