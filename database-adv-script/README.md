@@ -1,38 +1,49 @@
-# 🧠 Task 0 – Write Complex Queries with Joins
-**Project:** Unleashing Advanced Querying Power  
+# 🧠 Unleashing Advanced Querying Power
 **Repository:** [alx-airbnb-database](../)  
 **Directory:** `database-adv-script`  
-**Files:** `joins_queries.sql`, `README.md`  
+**Files:** `joins_queries.sql`, `subqueries.sql`, `README.md`
 
 ---
 
 ## 🎯 Objective
-Master SQL joins by writing complex queries using **INNER JOIN**, **LEFT JOIN**, and **FULL OUTER JOIN** to extract meaningful insights from the Airbnb database schema.
+Enhance SQL mastery through complex joins and subqueries to extract deep insights from the Airbnb schema.
 
 ---
 
-## 🧩 Task Description
-This task focuses on understanding and implementing different types of SQL joins to combine data from related tables efficiently. Each query demonstrates how relationships between entities (Users, Bookings, and Properties) can be leveraged to produce relevant results.
+## 🧩 Task 0 – Write Complex Queries with Joins
+**Goal:** Combine related data using SQL joins to generate meaningful relationships.
+
+### Queries Implemented
+1. **INNER JOIN:** Retrieve all bookings and the users who made them.  
+2. **LEFT JOIN:** Retrieve all properties and their reviews, including properties with none.  
+3. **FULL OUTER JOIN:** Retrieve all users and all bookings, even with missing links.
 
 ---
 
-## 💾 SQL Queries Overview
+## 🧠 Task 1 – Practice Subqueries
+**Goal:** Use both correlated and non-correlated subqueries for advanced filtering.
 
-### 1. INNER JOIN – Retrieve all bookings and the respective users
-Links bookings with their corresponding users, excluding any records without a match.
+### Queries Implemented
+1. **Non-Correlated Subquery**  
+   Retrieve all properties whose average rating exceeds 4.0.  
+   - Uses aggregation and filtering inside the subquery.
+   - Is independent of the outer query.
 
-### 2. LEFT JOIN – Retrieve all properties and their reviews
-Ensures all properties are displayed, even if they have no reviews.
-
-### 3. FULL OUTER JOIN – Retrieve all users and all bookings
-Displays all users and all bookings, even if one side is missing a relationship.
+2. **Correlated Subquery**  
+   Identify users who have made more than 3 bookings.  
+   - The inner query depends on the current row from the outer query.
+   - Ideal for per-user computations.
 
 ---
 
 ## ⚙️ Testing Instructions
-1. Open your SQL terminal or IDE (e.g., pgAdmin, DBeaver).  
-2. Load the Airbnb schema with `users`, `bookings`, `properties`, and `reviews` tables.  
-3. Run the queries in `joins_queries.sql`.  
-4. Use:
+1. Open your SQL IDE or terminal.  
+2. Load the Airbnb database schema with tables:
+   - `users`
+   - `properties`
+   - `bookings`
+   - `reviews`
+3. Run:
    ```sql
-   EXPLAIN ANALYZE <your query>;
+   \i joins_queries.sql;
+   \i subqueries.sql;
