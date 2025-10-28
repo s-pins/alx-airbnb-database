@@ -36,6 +36,27 @@ Enhance SQL mastery through complex joins and subqueries to extract deep insight
 
 ---
 
+## Task 2: Apply Aggregations and Window Functions
+**Objective:** Use SQL aggregation and window functions to analyze data.
+
+### 1️⃣ Total Number of Bookings per User
+This query calculates how many bookings each user has made using:
+- `COUNT()` for counting bookings.
+- `GROUP BY` to aggregate per user.
+- A `LEFT JOIN` ensures users with zero bookings are still included.
+
+```sql
+SELECT 
+    u.id AS user_id,
+    u.name AS user_name,
+    COUNT(b.id) AS total_bookings
+FROM users u
+LEFT JOIN bookings b ON u.id = b.user_id
+GROUP BY u.id, u.name
+ORDER BY total_bookings DESC;
+
+---
+
 ## ⚙️ Testing Instructions
 1. Open your SQL IDE or terminal.  
 2. Load the Airbnb database schema with tables:
