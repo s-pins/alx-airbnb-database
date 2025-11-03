@@ -26,6 +26,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 LEFT JOIN payments pay ON pay.booking_id = b.id
+WHERE b.booking_date > '2025-01-01'  
+AND pay.status = 'completed'      
 ORDER BY b.booking_date DESC;
 
 -- ===========================================
@@ -42,6 +44,7 @@ ORDER BY b.booking_date DESC;
 -- Using indexes and reducing join load by selecting only needed columns.
 -- ===========================================
 
+EXPLAIN ANALYZE
 SELECT 
     b.id AS booking_id,
     b.booking_date,
@@ -54,6 +57,8 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 LEFT JOIN payments pay ON pay.booking_id = b.id
+WHERE b.booking_date > '2025-01-01'   -- ✅ same filters
+AND pay.status = 'completed'
 ORDER BY b.booking_date DESC;
 
 -- Explanation:
@@ -61,3 +66,5 @@ ORDER BY b.booking_date DESC;
 -- 2. Relied on indexes from Task 3 (user_id, property_id, booking_date).
 -- 3. Avoided redundant sorting or subqueries.
 -- 4. Performance gain confirmed with EXPLAIN ANALYZE.
+
+
